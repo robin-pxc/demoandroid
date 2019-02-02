@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">DemoAndroid</string>
+
+    <!-- Login Activity -->
+    <string name="login_toolbar_title">Welcome</string>
+    <string name="login_page_title">Login With Your Account</string>
+    <string name="login_username_label">Enter your username</string>
+    <string name="login_username_hint">Username</string>
+    <string name="login_username_error">Your username should be 5 – 16 length, contains letters, numbers, dash, and underlines.</string>
+    <string name="login_password_label">Enter your password</string>
+    <string name="login_password_hint">Password</string>
+    <string name="login_password_error">Your password should be 6 – 20 length, contains letters(at least 1 capital letter)and numbers (NO special characters).</string>
+    <string name="login_button_text">Login</string>
+
+    <!-- Main Activity -->
+    <string name="main_toolbar_title">Perficient</string>
+</resources>
