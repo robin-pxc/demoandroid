@@ -16,11 +16,14 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 
+import static com.example.robinpan.demoandroid.constants.AppConstants.Intent.MAIN_ACTIVITY_USERNAME_KEY;
+
 
 public class MainActivity extends BaseActivity implements MainActivityContract.View {
 
-    public static void launch(Context context) {
+    public static void launch(Context context, String username) {
         Intent mainActivityIntent = new Intent(context, MainActivity.class);
+        mainActivityIntent.putExtra(MAIN_ACTIVITY_USERNAME_KEY, username);
         mainActivityIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(mainActivityIntent);
     }
@@ -29,7 +32,7 @@ public class MainActivity extends BaseActivity implements MainActivityContract.V
     MainActivityPresenter mainActivityPresenter;
 
     @BindView(R.id.main_activity_drawer_layout)
-    DrawerLayout mDrawerlayout;
+    DrawerLayout mDrawerLayout;
 
     @BindView(R.id.navigation_view)
     NavigationView mNavigationView;
@@ -62,7 +65,7 @@ public class MainActivity extends BaseActivity implements MainActivityContract.V
                 }
 
                 menuItem.setChecked(true);
-                mDrawerlayout.closeDrawers();
+                mDrawerLayout.closeDrawers();
                 return false;
             }
         });

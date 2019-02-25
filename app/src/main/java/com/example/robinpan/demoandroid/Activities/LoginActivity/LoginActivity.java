@@ -104,7 +104,7 @@ public class LoginActivity extends BaseActivity implements LoginActivityContract
 
     @OnClick(R.id.login_button)
     public void onLoginButtonClick() {
-        MainActivity.launch(this);
+        MainActivity.launch(this, mLoginUsernameTextInputEditText.getText().toString());
     }
 
     class LoginTextWatcher implements TextWatcher {

@@ -55,7 +55,7 @@ public class MainActivityTest {
     @Test
     public void testLaunch() {
         //Todo: update this test
-        MainActivity.launch(spyMainActivity);
+        MainActivity.launch(spyMainActivity, "username");
         verify(spyMainActivity).startActivity(any(Intent.class));
     }
 
