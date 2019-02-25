@@ -6,7 +6,6 @@ import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
-import android.view.MenuItem;
 
 import com.example.robinpan.demoandroid.Activities.Base.BaseActivity;
 import com.example.robinpan.demoandroid.R;
@@ -37,6 +36,7 @@ public class MainActivity extends BaseActivity implements MainActivityContract.V
     @BindView(R.id.navigation_view)
     NavigationView mNavigationView;
 
+
     @LayoutRes
     @Override
     public int getLayoutResID() {
@@ -45,29 +45,31 @@ public class MainActivity extends BaseActivity implements MainActivityContract.V
 
     @Override
     public void configViews() {
+        configActionBar();
         setActionBarTitle(getString(R.string.main_toolbar_title));
         setNavigationMenu();
     }
 
-    void setNavigationMenu() {
-        mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                switch (menuItem.getItemId()) {
-                    case R.id.nav_home:
-                        break;
-                    case R.id.nav_books:
-                        break;
-                    case R.id.nav_weather:
-                        break;
-                    case R.id.sign_out:
-                        break;
-                }
+    void configActionBar() {
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
 
-                menuItem.setChecked(true);
-                mDrawerLayout.closeDrawers();
-                return false;
+    void setNavigationMenu() {
+        mNavigationView.setNavigationItemSelectedListener(menuItem -> {
+            switch (menuItem.getItemId()) {
+                case R.id.nav_home:
+                    break;
+                case R.id.nav_books:
+                    break;
+                case R.id.nav_weather:
+                    break;
+                case R.id.sign_out:
+                    break;
             }
+
+            menuItem.setChecked(true);
+            mDrawerLayout.closeDrawers();
+            return false;
         });
     }
 
