@@ -1,5 +1,6 @@
 package com.example.robinpan.demoandroid.Activities.LoginActivity;
 
+import android.content.Intent;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.ActionBar;
@@ -7,6 +8,7 @@ import android.text.Editable;
 import android.text.SpannableStringBuilder;
 import android.widget.Button;
 
+import com.example.robinpan.demoandroid.Activities.MainActivity.MainActivity;
 import com.example.robinpan.demoandroid.CommonUtils.StringUtils;
 import com.example.robinpan.demoandroid.R;
 import com.example.robinpan.demoandroid.dagger.Components.DaggerAppComponent;
@@ -23,12 +25,13 @@ import org.powermock.modules.junit4.PowerMockRunner;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.verify;
 
 @RunWith(PowerMockRunner.class)
-@PrepareForTest({DaggerAppComponent.class})
+@PrepareForTest({DaggerAppComponent.class, MainActivity.class})
 public class LoginActivityTest {
 
     private LoginActivity spyLoginActivity;
@@ -183,6 +186,13 @@ public class LoginActivityTest {
         spyLoginActivity.disableLoginButton();
 
         verify(mockLoginButton).setEnabled(false);
+    }
+
+    @Test
+    public void testLoginButtonClick() {
+        spyLoginActivity.onLoginButtonClick();
+
+        spyLoginActivity.startActivity(any(Intent.class));
     }
 
     @Test

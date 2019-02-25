@@ -1,9 +1,13 @@
 package com.example.robinpan.demoandroid.Activities.MainActivity;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.app.ActionBar;
 
 import com.example.robinpan.demoandroid.R;
 import com.example.robinpan.demoandroid.dagger.Components.DaggerAppComponent;
+
+import junit.framework.Assert;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -13,15 +17,20 @@ import org.mockito.MockitoAnnotations;
 import org.powermock.api.mockito.PowerMockito;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
+import org.robolectric.RuntimeEnvironment;
+import org.robolectric.shadows.ShadowActivity;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.verify;
+import static org.robolectric.Shadows.shadowOf;
 
 @RunWith(PowerMockRunner.class)
-@PrepareForTest({DaggerAppComponent.class})
+@PrepareForTest({DaggerAppComponent.class, Intent.class})
 public class MainActivityTest {
     @Mock
     private DaggerAppComponent mockDaggerAppComponent;
@@ -41,6 +50,13 @@ public class MainActivityTest {
         spyMainActivity = spy(new MainActivity());
 
         spyMainActivity.mainActivityPresenter = mockPresenter;
+    }
+
+    @Test
+    public void testLaunch() {
+        //Todo: update this test
+        MainActivity.launch(spyMainActivity);
+        verify(spyMainActivity).startActivity(any(Intent.class));
     }
 
     @Test

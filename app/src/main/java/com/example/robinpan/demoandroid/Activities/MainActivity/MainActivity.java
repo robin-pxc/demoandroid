@@ -1,5 +1,7 @@
 package com.example.robinpan.demoandroid.Activities.MainActivity;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 
@@ -11,6 +13,12 @@ import javax.inject.Inject;
 
 
 public class MainActivity extends BaseActivity implements MainActivityContract.View {
+
+    public static void launch(Context context) {
+        Intent mainActivityIntent = new Intent(context, MainActivity.class);
+        mainActivityIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(mainActivityIntent);
+    }
 
     @Inject
     MainActivityPresenter mainActivityPresenter;

@@ -10,12 +10,14 @@ import android.widget.Button;
 
 import com.example.robinpan.demoandroid.Activities.Base.BaseActivity;
 import com.example.robinpan.demoandroid.Activities.Base.BaseActivityPresenter;
+import com.example.robinpan.demoandroid.Activities.MainActivity.MainActivity;
 import com.example.robinpan.demoandroid.R;
 import com.example.robinpan.demoandroid.dagger.Components.DaggerAppComponent;
 
 import javax.inject.Inject;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 import static com.example.robinpan.demoandroid.CommonUtils.StringUtils.RegexMatcher.PASSWORD_REGEX;
 import static com.example.robinpan.demoandroid.CommonUtils.StringUtils.RegexMatcher.USERNAME_REGEX;
@@ -98,6 +100,11 @@ public class LoginActivity extends BaseActivity implements LoginActivityContract
     @Override
     public void disableLoginButton() {
         mLoginButton.setEnabled(false);
+    }
+
+    @OnClick(R.id.login_button)
+    public void onLoginButtonClick() {
+        MainActivity.launch(this);
     }
 
     class LoginTextWatcher implements TextWatcher {
